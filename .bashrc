@@ -1,4 +1,6 @@
 . ~/bin/bash_colors.sh
+# Set the default editor.
+export EDITOR=vim
 
 # Add paths that should have been there by default
 export PATH=${PATH}:/usr/local/bin
