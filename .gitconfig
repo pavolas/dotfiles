@@ -1,0 +1,10 @@
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "diff"]
+    meta = cyan
+    frag = magenta
+    old = red
+    new = green
+    whitespace = white
