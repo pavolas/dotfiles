@@ -6,10 +6,22 @@ export EDITOR=vim
 export PATH=${PATH}:/usr/local/bin
 export PATH="~/bin:$PATH"
 
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+    platform='linux'
+else
+    platform='darwin'
+fi
+
 # Unbreak broken, non-colored terminal
 export TERM='xterm-color'
-alias ls='ls -G --color'
-alias ll='ls -lG'
+if [[ $platform == 'linux' ]]; then
+    alias ls='ls -G --color'
+else
+    alias ls='ls -G'
+    export CLICOLOR=1
+fi
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
