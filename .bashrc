@@ -22,7 +22,7 @@ else
     alias ls='ls -G'
     export CLICOLOR=1
 fi
-export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export LSCOLORS="gxfxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
 # Erase duplicates in history
