@@ -1,3 +1,4 @@
+#export TERM=Apple_Terminal
 . ~/bin/bash_colors.sh
 # Set the default editor.
 export EDITOR=vim
@@ -63,3 +64,8 @@ source ~/bin/git-prompt.sh
     export PS1="$__user_and_host $__cur_location \[$red\]\$(__git_ps1)\[$reset\]$__tail "
  }
 color_my_prompt
+
+# This seems necessary to make ctrl-r history search work on os-x
+# Both commands work. For some reason, setting "xterm" as the emulation terminal under preferences has no effect.
+export TERM=xterm
+#export TERM=Apple_Terminal
