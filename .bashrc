@@ -4,7 +4,10 @@ export EDITOR=vim
 
 # Add paths that should have been there by default
 export PATH=${PATH}:/usr/local/bin
-export PATH="~/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+# Add paths for chromium
+export PATH="$HOME/projects/depot_tools:$PATH"
 
 platform='unknown'
 unamestr=`uname`
@@ -37,12 +40,26 @@ source ~/bin/git-completion.bash
 
 # Color the prompt
 source ~/bin/git-prompt.sh
-function color_my_prompt {
-    local __user_and_host="\[\033[00;32m\]\u@\h"
-    local __cur_location="\[\033[00;36m\]\w"
-    local __git_branch_color="\[\033[31m\]"
-    local __prompt_tail="\[\033[35m\]$"
-    local __last_color="\[\033[00m\]"
-    export PS1="$__user_and_host $__cur_location $__git_branch_color\$(__git_ps1)$__prompt_tail$__last_color "
-}
+# function color_my_prompt {
+#     local __user_and_host="\[\033[00;32m\]\u@\h"
+#     local __cur_location="\[\033[00;36m\]\w"
+#     local __git_branch_color="\[\033[31m\]"
+#     local __prompt_tail="\[\033[35m\]$"
+#     local __last_color="\[\033[00m\]"
+#     export PS1="$__user_and_host $__cur_location $__git_branch_color\$(__git_ps1)$__prompt_tail$__last_color "
+# }
+#color_my_prompt
+# Using tput makes <ctr r> history search work on mac os x
+ function color_my_prompt {
+    local green=$(tput setaf 2)
+    local red=$(tput setaf 1)
+    local cyan=$(tput setaf 6)
+    local magenta=$(tput setaf 5)
+    # local bold=$(tput bold)
+    local reset=$(tput sgr0)
+    local __user_and_host="\[$green\]\u@\h\[$reset\]"
+    local __cur_location="\[$cyan\]\w\[$reset\]"
+    local __tail="\[$magenta\]$\[$reset\]"
+    export PS1="$__user_and_host $__cur_location \[$red\]\$(__git_ps1)\[$reset\]$__tail "
+ }
 color_my_prompt
